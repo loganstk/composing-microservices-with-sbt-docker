@@ -1,6 +1,6 @@
 import sbt._
 
-name := "beacon-service"
+name := "tracking-service"
 
 organization := "cakesolutions"
 
@@ -24,6 +24,7 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic" % circeVersion,
   "io.circe" %% "circe-parser" % circeVersion,
   "io.circe" %% "circe-jawn" % circeVersion,
+  "io.circe" %% "circe-java8" % circeVersion,
   "org.mockito" % "mockito-core" % "1.10.19" % "test"
 )
 
@@ -35,10 +36,9 @@ mainClass in assembly := Some("com.markglh.blog.Bootstrap")
 
 // Resolve duplicates for Sbt Assembly
 assemblyMergeStrategy in assembly := {
-  case PathList(xs @ _*) if xs.last == "io.netty.versions.properties" => MergeStrategy.rename
+  case PathList(xs@_*) if xs.last == "io.netty.versions.properties" => MergeStrategy.rename
   case other => (assemblyMergeStrategy in assembly).value(other)
 }
-
 
 // publish to artifacts directory
 publishArtifact in(Compile, packageDoc) := false
@@ -49,7 +49,6 @@ cleanFiles <+= baseDirectory { base => base / "artifacts" }
 // ------
 
 scalacOptions in ThisBuild ++= Seq("-unchecked", "-deprecation")
-
 
 
 //----------------
