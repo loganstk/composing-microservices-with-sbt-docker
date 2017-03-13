@@ -1,0 +1,26 @@
+- hosts: "{{hosts}}"
+  gather_facts: no
+
+  vars:
+    root: "/home/mabatonline/dev/aggregator-service"
+    img_name: "aggregator-service"
+
+  pre_tasks:
+    - name: "install python2"
+      raw: apt-get -y install python-simplejson
+      become: true
+
+  tasks:
+    - name: "creating directory for binaries"
+      file:
+        path: "{{vars.root}}"
+        state: directory
+
+    - name: "copying docker files"
+      copy:
+        src: "target/docker"
+        dest: "{{vars.root}}"
+
+    - name: "creating docker image"
+      shell: "docker build -t {{vars.img_name}} {{vars.root}}"
+

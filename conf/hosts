@@ -1,0 +1,2 @@
+[develop]
+88.99.136.72 ansible_ssh_port=22 ansible_user=mabatonline ansible_ssh_pass="cY3eYLXZPs8hUJt25wvjLQ8LaPTJSbKShp7B5uGZGEvH5CD9STMPwqtPEKTKKu62" ansible_sudo_pass="cY3eYLXZPs8hUJt25wvjLQ8LaPTJSbKShp7B5uGZGEvH5CD9STMPwqtPEKTKKu62"
