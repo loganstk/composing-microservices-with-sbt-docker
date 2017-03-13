@@ -1,4 +1,4 @@
-- hosts: "{{hosts}}"
+- hosts: "develop"
   gather_facts: no
 
   vars:
