@@ -17,9 +17,7 @@
         state: directory
 
     - name: "copying docker files"
-      copy:
-        src: "target/docker"
-        dest: "{{vars.root}}"
+      shell: "cp ./target/docker {{root}}"
 
     - name: "creating docker image"
       shell: "docker build -t {{vars.img_name}} {{vars.root}}"
